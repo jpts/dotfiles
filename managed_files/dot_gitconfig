@@ -1,0 +1,29 @@
+[core]
+    editor = nvim
+    fileMode = false
+[alias]
+    co = checkout
+    count = shortlog -sn
+    gr = grep --break --heading --line-number
+    alias = !git config -l | fgrep alias | cut -c 7- | sort
+    slog = log --show-signature
+    recommit = !git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG
+[commit]
+    template = ~/.config/git/commit_template
+[color]
+    diff = auto
+    status = auto
+[grep]
+    extendRegexp = true
+    lineNumber = true
+[push]
+    default = current
+[pull]
+    ff = only
+[diff]
+    wsErrorHighlight = all
+[init]
+	defaultBranch = main
+
+[includeIf "gitdir:~/git/github/"]
+    path = ~/.config/git/github/config

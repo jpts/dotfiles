@@ -1,0 +1,24 @@
+# theme
+romkatv/powerlevel10k pin:35833ea15f14b71dbcebc7e54c104d8d56ca5268 #v1.20.0
+
+# my own completion repo
+jpts/zsh-prezto-completion
+
+# suggest completions
+zsh-users/zsh-autosuggestions pin:e52ee8ca55bcc56a17c828767a3f98f22a68d4eb #v0.7.1
+
+# cd on steroids
+rupa/z pin:d37a763a6a30e1b32766fecc3b8ffd6127f8a0fd #head
+
+# fuzzy file finder config
+junegunn/fzf path:shell/key-bindings.zsh pin:ce4bef75954bebd87e0886435bcf8c6904328ab0 #v0.37.1
+
+# dotenv
+ohmyzsh/ohmyzsh path:plugins/dotenv pin:d170d18746bb06db7b2fc97b67e281597a3fc152 #head
+
+# python venvs
+MichaelAquilina/zsh-autoswitch-virtualenv pin:9020833b13f8982d1fdc0d1541ccdc87670beb23 #v3.9.0
+
+# must be last
+zsh-users/zsh-syntax-highlighting pin:db085e4661f6aafd24e5acb5b2e17e4dd5dddf3e #v0.8.0
+zsh-users/zsh-history-substring-search pin:400e58a87f72ecec14f783fbd29bc6be4ff1641c #v1.1.0

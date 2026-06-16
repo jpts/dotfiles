@@ -1,0 +1,26 @@
+vim-plug.vim:
+  type: archive-file
+  url: https://github.com/junegunn/vim-plug/archive/refs/tags/0.14.0.tar.gz
+  exact: true
+  stripComponents: 1
+  path: plug.vim
+  targetPath: .vim/autoload/plug.vim
+  checksum:
+    sha256: a8e86db8c62deefa70057fd0abc81bc20e270ab9811eee3ccbe9ceafd3d8a876
+neovim-plug.vim:
+  type: archive-file
+  url: https://github.com/junegunn/vim-plug/archive/refs/tags/0.14.0.tar.gz
+  exact: true
+  stripComponents: 1
+  path: plug.vim
+  targetPath: .local/share/nvim/site/autoload/plug.vim
+  checksum:
+    sha256: a8e86db8c62deefa70057fd0abc81bc20e270ab9811eee3ccbe9ceafd3d8a876
+antidote:
+  type: archive
+  url: https://github.com/mattmc3/antidote/releases/tag/v2.1.0.tar.gz
+  exact: true
+  stripComponents: 1
+  targetPath: .cache/zsh/antidote
+  checksum:
+    sha256: 9c31f168caac213c9f51a7369ef325f77dc54d4c9b3610030f03ade5e429b39c

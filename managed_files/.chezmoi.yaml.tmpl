@@ -1,0 +1,14 @@
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{- $choices := list "personal" "work" -}}
+{{- $machine_type := promptChoiceOnce . "machine_type" "What type of machine are you on" $choices -}}
+
+sourceDir: ~/.dotfiles
+#mode: symlink
+
+data:
+  osid: {{ $osid | quote }}
+  machine_type: {{ $machine_type | quote }}

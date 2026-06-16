@@ -1,0 +1,44 @@
+extends: relaxed
+
+yaml-files:
+  - "*.yaml"
+  - "*.yml"
+
+rules:
+  braces:
+    level: warning
+    max-spaces-inside: 1
+  brackets:
+    level: warning
+    max-spaces-inside: 1
+  colons:
+    max-spaces-before: 0
+  commas:
+    max-spaces-before: 0
+    max-spaces-after: 1
+  comments: disable
+  comments-indentation: disable
+  document-start: disable
+  empty-lines:
+    max: 2
+    max-start: 0
+    max-end: 0
+    level: warning
+  hyphens:
+    level: warning
+  indentation:
+    level: warning
+    spaces: 2
+    indent-sequences: consistent
+    check-multi-line-strings: false
+  line-length:
+    max: 100
+    level: warning
+    allow-non-breakable-inline-mappings: true
+  quoted-strings:
+    quote-type: double
+    required: only-when-needed
+    level: warning
+  truthy: disable
+
+# vi:ft=yaml

@@ -1,0 +1,17 @@
+
+########50 characters############################
+#[bin]: Update binary scripts associated with the project
+#[build]: changles that affect the build system
+#[chore]: updating grunt tasks etc; no production code change
+#[ci]: ci/cd changes
+#[dist]: Changes to submodules, version bumps, updates to package.json
+#[doc]: Updates to documentation
+#[feat]: New features
+#[fix]: Bug fixes
+#[minor]: Small changes
+#[nit]: Small code review changes mainly around style or syntax
+#[perf]: A code change that improves performance
+#[refactor]: Refactor of existing code
+#[style]: formatting, eg tabs->spaces
+#[test]: Update test/* files
+########72 characters##################################################

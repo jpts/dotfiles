@@ -1,0 +1,42 @@
+export EDITOR=nvim
+export GOPATH=$HOME/go
+export PYTHONSTARTUP="$HOME/.pythonrc.py"
+export CLOUDSDK_PYTHON=python3
+export PULUMI_SKIP_UPDATE_CHECK=true
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+export GOPASS_GPG_OPTS="--armor"
+export PASSWORD_STORE_GENERATED_LENGTH=32
+export PODMAN_COMPOSE_PROVIDER=podman-compose
+
+# source pathmunge
+source ~/.dotfiles/functions/path.sh
+
+{{- if eq .chezmoi.os "linux" }}
+# fix pip bug
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+export COOK="$HOME/.cook/ingredients/"
+export ELECTRON_TRASH=gio
+export XDG_CONFIG_HOME="$HOME/.config"
+{{- else if eq .chezmoi.os "darwin" }}
+pathmunge /opt/homebrew/bin
+pathmunge /opt/homebrew/sbin
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+export HOMEBREW_AUTO_UPDATE_SECS=172800 # 48 hours
+export HOMEBREW_API_AUTO_UPDATE_SECS=86400 # 24 hours
+export HOMEBREW_NO_ANALYTICS=true
+{{- end }}
+
+pathmunge /usr/local/bin
+pathmunge ~/go/bin
+pathmunge ~/.krew/bin
+pathmunge ~/.local/bin
+pathmunge ~/bin
+pathmunge ~/bin/fedora-tools
+pathdedupe
+
+export ZPROFILE_LOADED=true

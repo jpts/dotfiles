@@ -1,0 +1,94 @@
+[ -z "$ZPROF" ] || zmodload zsh/zprof
+
+setopt cshnullglob
+
+# Precompile plugins
+# https://github.com/romkatv/zsh-bench/blob/master/configs/diy%2B%2B/skel/.zshrc
+function zcompile-many() {
+  local f
+  for f; do
+      if [[ ! -e "$f.zwc" || "$f" -nt "$f.zwc" ]]; then
+          #echo "Compiling $f"
+          zcompile -R -- "$f".zwc "$f"
+      fi
+  done
+}
+
+function zcompile-antidote-plugins() {
+  setopt cshnullglob
+  setopt extendedglob
+  IFS=$'\n' local LIST=($(antidote list | awk '{print $2}'))
+  for DIR in $LIST[@]; do
+    if [[ -n $DIR/**/*.zsh(#qN) ]]; then
+      zcompile-many $DIR/**/*.zsh
+    fi
+  done
+  unset IFS
+}
+
+export DOTFILES="$HOME/.dotfiles"
+ZSH="$DOTFILES/zsh"
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+export ANTIDOTECACHE="${XDG_CACHE_HOME:-$HOME/.cache}/antidote"
+export ANTIDOTEDIR="$ZSH_CACHE_DIR/antidote"
+
+# prompt customisations
+setopt prompt_subst
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
+
+# "Avoid partial globs"; assume the first part of a path is exact?
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' accept-exact-dirs true
+
+zstyle ':completion:*' list-dirs-first true
+zstyle ':completion:*' squeeze-slashes true
+
+# Plugin Options
+# https://github.com/zsh-users/zsh-autosuggestions#disabling-automatic-widget-re-binding
+# _zsh_autosuggest_bind_widgets
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# ZSH Defaults
+source $ZSH/vendor-fns.zsh
+source $ZSH/history.zsh
+source $ZSH/window.zsh
+source $ZSH/keys.zsh
+
+# Load Antidote
+fpath+=("$ANTIDOTEDIR")
+autoload -Uz "$ANTIDOTEDIR/antidote"
+
+if [[ ! -s "$ZSH_CACHE_DIR/plugins_bundle.zsh" || "$ZSH/plugins" -nt "$ZSH_CACHE_DIR/plugins_bundle.zsh" ]]; then
+    echo "Rebuilding ZSH plugin list..."
+    mkdir -p "$ZSH_CACHE_DIR"
+    antidote bundle < ~/.dotfiles/zsh/plugins > "$ZSH_CACHE_DIR/plugins_bundle.zsh"
+    zcompile-antidote-plugins
+fi
+source $ZSH_CACHE_DIR/plugins_bundle.zsh
+
+for file in $DOTFILES/aliases/*.{zsh,sh}; do
+    source "$file"
+done
+
+if [ -f $DOTFILES/aliases_local ]; then
+  source $DOTFILES/aliases_local
+fi
+
+# lastly compinit magic
+source $ZSH/compinit.zsh
+
+# kitty
+if [[ $commands[kitty] && "$TERM" == "xterm-kitty" ]]; then
+    source-completion-cache "kitty" "+ complete setup zsh"
+fi
+
+# post compinit completion
+source $ZSH/clouds.zsh
+source $ZSH/granted.zsh
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -z "$ZPROF" ] || zprof
