@@ -18,9 +18,9 @@ neovim-plug.vim:
     sha256: a8e86db8c62deefa70057fd0abc81bc20e270ab9811eee3ccbe9ceafd3d8a876
 antidote:
   type: archive
-  url: https://github.com/mattmc3/antidote/releases/tag/v2.1.0.tar.gz
+  url: https://github.com/mattmc3/antidote/archive/refs/tags/v2.1.0.tar.gz
   exact: true
   stripComponents: 1
   targetPath: .cache/zsh/antidote
   checksum:
-    sha256: 9c31f168caac213c9f51a7369ef325f77dc54d4c9b3610030f03ade5e429b39c
+    sha256: 48d486670fa14097ec5a5a649456aff94f0098618c9320ad634f88d0669c8f5b
