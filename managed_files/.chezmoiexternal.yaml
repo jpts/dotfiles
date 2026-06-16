@@ -24,3 +24,8 @@ antidote:
   targetPath: .cache/zsh/antidote
   checksum:
     sha256: "48d486670fa14097ec5a5a649456aff94f0098618c9320ad634f88d0669c8f5b"
+  include:
+    - "*/antidote"
+    - "*/antidote.zsh"
+    - "*/functions"
+    - "*/functions/*"
