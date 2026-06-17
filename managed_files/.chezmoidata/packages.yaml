@@ -1,0 +1,9 @@
+packages:
+  all:
+    - curl
+    - jq
+    - fzf
+    - ripgrep
+    - python3-rich
+  debian:
+  fedora:

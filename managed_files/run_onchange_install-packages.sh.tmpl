@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+{{ $pkgs := .packages.all }}
+
+{{ if eq .osid "linux-debian" -}}
+{{ $pkgs = concat $pkgs .packages.debian -}}
+
+apt install -y {{ $pkgs | join " " }}
+{{ end -}}
+
+{{ if eq .osid "linux-fedora" -}}
+{{ $pkgs = concat $pkgs .packages.fedora -}}
+
+dnf install -y {{ $pkgs | join " " }}
+{{ end -}}
