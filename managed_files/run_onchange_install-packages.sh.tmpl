@@ -2,16 +2,21 @@
 
 set -eufo pipefail
 
-{{ $pkgs := .packages.all }}
+{{ $sudo := "sudo" -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+{{ $pkgs := .packages.all -}}
 
 {{ if eq .osid "linux-debian" -}}
 {{ $pkgs = concat $pkgs .packages.debian -}}
 
-apt install -y {{ $pkgs | join " " }}
+{{ $sudo }} apt install -y {{ $pkgs | join " " -}}
 {{ end -}}
 
 {{ if eq .osid "linux-fedora" -}}
 {{ $pkgs = concat $pkgs .packages.fedora -}}
 
-dnf install -y {{ $pkgs | join " " }}
-{{ end -}}
+{{ $sudo }} dnf install -y {{ $pkgs | join " " -}}
+{{ end }}

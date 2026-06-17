@@ -1,9 +1,13 @@
 packages:
   all:
+    - zsh
+    - git
     - curl
     - jq
     - fzf
     - ripgrep
     - python3-rich
-  debian:
-  fedora:
+    - podman
+    - skopeo
+  debian: []
+  fedora: []
