@@ -6,8 +6,7 @@
 {{- $choices := list "personal" "work" -}}
 {{- $machine_type := promptChoiceOnce . "machine_type" "What type of machine are you on" $choices -}}
 
-sourceDir: ~/git/github/dotfiles
-#mode: symlink
+sourceDir: ~/git/github/dotfiles-public
 
 data:
   osid: {{ $osid | quote }}
