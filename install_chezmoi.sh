@@ -4,7 +4,7 @@ set -euo pipefail
 
 VERSION="2.70.5"
 
-for cmd in mktemp curl cosign tar sha256sum install strip blah; do
+for cmd in mktemp curl cosign tar sha256sum install strip; do
   if ! command -v $cmd &>/dev/null; then
     echo "Command not found: $cmd"
     exit 1

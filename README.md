@@ -5,6 +5,5 @@
 
 ```
 ./install_chezmoi.sh
-chezmoi init --apply git@github.com:jpts/dotfiles.git --source-path ~/git/github/dotfiles
-ln -s ~/git/github/dotfiles ~/.dotfiles
+~/.local/bin/chezmoi --source ~/git/github/dotfiles-public init git@github.com:jpts/dotfiles.git --apply
 ```
