@@ -9,5 +9,7 @@ packages:
     - python3-rich
     - podman
     - skopeo
+    - pre-commit
+    - yamllint
   debian: []
   fedora: []
