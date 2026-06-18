@@ -23,7 +23,10 @@
 [diff]
     wsErrorHighlight = all
 [init]
-	defaultBranch = main
+	  defaultBranch = main
+
+[include]
+    path = ~/.config/git/local_config
 
 [includeIf "gitdir:~/git/github/"]
     path = ~/.config/git/github/config
