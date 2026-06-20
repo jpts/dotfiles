@@ -68,6 +68,7 @@ if [[ ! -s "$ZSH_CACHE_DIR/plugins_bundle.zsh" || "$ZSH/plugins" -nt "$ZSH_CACHE
     antidote bundle < ~/.dotfiles/zsh/plugins > "$ZSH_CACHE_DIR/plugins_bundle.zsh"
     zcompile-antidote-plugins
 fi
+export GITSTATUS_AUTO_INSTALL=0
 source $ZSH_CACHE_DIR/plugins_bundle.zsh
 
 for file in $DOTFILES/aliases/*.{zsh,sh}; do
