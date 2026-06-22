@@ -3,6 +3,7 @@ packages:
     - zsh
     - git
     - curl
+    - neovim
     - jq
     - fzf
     - ripgrep
