@@ -46,3 +46,10 @@ gitstatusd:
   targetPath: .cache/gitstatus/gitstatusd-linux-x86_64
   checksum:
     sha256: "9633816e7832109e530c9e2532b11a1edae08136d63aa7e40246c0339b7db304"
+tf-docs:
+  type: archive-file
+  url: {{ gitHubReleaseAssetURL "terraform-docs/terraform-docs" "v0.24.0" "terraform-docs-*-linux-amd64.tar.gz" }}
+  path: terraform-docs
+  targetPath: .local/bin/terraform-docs
+  checksum:
+    sha256: "9005daf969de0b50134493a2c00078b49f5f5b39d021cda7c89bf4d4f3d776d3"
