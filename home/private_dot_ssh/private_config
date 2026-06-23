@@ -13,7 +13,7 @@ Host *
 
   # Mux port
   ControlMaster auto
-  ControlPath ~/.ssh/.mux-%r-%h-%p
+  ControlPath ~/.ssh/.mux-%C
   ControlPersist 10m
 
   # Conveinence
