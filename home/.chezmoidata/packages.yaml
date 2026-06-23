@@ -12,5 +12,7 @@ packages:
     - skopeo
     - pre-commit
     - yamllint
-  debian: []
-  fedora: []
+  debian:
+    - ipcalc-ng
+  fedora:
+    - ipcalc
