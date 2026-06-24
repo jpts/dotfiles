@@ -30,8 +30,6 @@ function ouisearch() {
   OUI="$(echo -n "$1" | tr -d ':')"
   if [ -f /usr/share/hwdata/oui.txt ]; then
     DB="/usr/share/hwdata/oui.txt"
-  elif [ -f "$HOME/.nix-profile/share/hwdata/oui.txt" ]; then
-    DB="$HOME/.nix-profile/share/hwdata/oui.txt"
   else
     echo "OUI DB not found"
     exit 1
