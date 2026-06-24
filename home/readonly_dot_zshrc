@@ -71,7 +71,7 @@ fi
 export GITSTATUS_AUTO_INSTALL=0
 source $ZSH_CACHE_DIR/plugins_bundle.zsh
 
-for file in $DOTFILES/aliases/*.{zsh,sh}; do
+for file in $HOME/.zsh/aliases/*.{zsh,sh}; do
     source "$file"
 done
 
