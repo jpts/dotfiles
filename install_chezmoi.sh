@@ -17,7 +17,7 @@ for cmd in mktemp curl tar sha256sum install awk; do
 done
 
 DISTRO="$(awk -F= '/^ID=/ {print $2}' /etc/os-release)"
-VERSION="$(awk -F= '/^VERSION=/ {print $2}' /etc/os-release)"
+OS_VERSION="$(awk -F= '/^VERSION=/ {print $2}' /etc/os-release)"
 
 install_cosign_from_github() {
   curl -sSfL https://github.com/sigstore/cosign/releases/download/v3.1.1/cosign-linux-amd64 -o ./cosign
@@ -28,20 +28,24 @@ install_cosign_from_github() {
 TMP=$(mktemp -d)
 pushd "$TMP"
 
+mkdir -p ~/.local/bin
+export PATH="$HOME/.local/bin:$PATH"
+
 if ! command -v cosign &>/dev/null; then
-  case DISTRO in
-    "ubuntu")
-      if [[ $VERSION == "25."* || $VERSION == "26."* ]]; then
+  case $DISTRO in
+    ubuntu)
+      if [[ $OS_VERSION == "25."* || $OS_VERSION == "26."* ]]; then
         sudo apt install cosign -y --no-install-recommends
       else
         install_cosign_from_github
       fi
       ;;
-    "debian")
+    debian)
       sudo apt install cosign -y --no-install-recommends
       ;;
-    "alpine")
+    alpine)
       sudo apk add cosign -y --no-cache
+      ;;
     *)
       echo "Distro $DISTRO unsuported" >&2
       install_cosign_from_github
@@ -78,4 +82,4 @@ if [ -d "$TMP" ]; then
   rm -rf "$TMP"
 fi
 
-~/.local/bin/chezmoi --version
+chezmoi --version

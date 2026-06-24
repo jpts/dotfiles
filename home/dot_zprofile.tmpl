@@ -15,7 +15,6 @@ source ~/.dotfiles/aliases/path.sh
 {{- if eq .chezmoi.os "linux" }}
 # fix pip bug
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
-export COOK="$HOME/.cook/ingredients/"
 export ELECTRON_TRASH=gio
 export XDG_CONFIG_HOME="$HOME/.config"
 {{- else if eq .chezmoi.os "darwin" }}
