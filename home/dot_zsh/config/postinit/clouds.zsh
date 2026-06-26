@@ -2,7 +2,7 @@
 
 # detect if gcloud installed
 if [[ $commands[gcloud] ]]; then
-    source "$DOTFILES/zsh/gcloud.zsh"
+    source "$ZSH/gcloud.zsh"
     alias gcloud='TERM=xterm-256color gcloud'
 fi
 

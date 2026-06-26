@@ -27,7 +27,7 @@ function zcompile-antidote-plugins() {
 }
 
 export DOTFILES="$HOME/.dotfiles"
-ZSH="$DOTFILES/zsh"
+ZSH="$HOME/.zsh/config"
 export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 export ANTIDOTECACHE="${XDG_CACHE_HOME:-$HOME/.cache}/antidote"
 export ANTIDOTEDIR="$ZSH_CACHE_DIR/antidote"
@@ -53,10 +53,10 @@ zstyle ':completion:*' squeeze-slashes true
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # ZSH Defaults
-source $ZSH/vendor-fns.zsh
-source $ZSH/history.zsh
-source $ZSH/window.zsh
-source $ZSH/keys.zsh
+for file in $ZSH/preinit/*.zsh; do
+    source "$file"
+done
+
 
 # Load Antidote
 fpath+=("$ANTIDOTEDIR")
@@ -65,7 +65,7 @@ autoload -Uz "$ANTIDOTEDIR/antidote"
 if [[ ! -s "$ZSH_CACHE_DIR/plugins_bundle.zsh" || "$ZSH/plugins" -nt "$ZSH_CACHE_DIR/plugins_bundle.zsh" ]]; then
     echo "Rebuilding ZSH plugin list..."
     mkdir -p "$ZSH_CACHE_DIR"
-    antidote bundle < ~/.dotfiles/zsh/plugins > "$ZSH_CACHE_DIR/plugins_bundle.zsh"
+    antidote bundle < "$ZSH/plugins" > "$ZSH_CACHE_DIR/plugins_bundle.zsh"
     zcompile-antidote-plugins
 fi
 export GITSTATUS_AUTO_INSTALL=0
@@ -88,8 +88,10 @@ if [[ $commands[kitty] && "$TERM" == "xterm-kitty" ]]; then
 fi
 
 # post compinit completion
-source $ZSH/clouds.zsh
-source $ZSH/granted.zsh
+for file in $ZSH/postinit/*.zsh; do
+    source "$file"
+done
+
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -z "$ZPROF" ] || zprof
