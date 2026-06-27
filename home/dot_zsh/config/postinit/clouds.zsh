@@ -10,12 +10,6 @@ fi
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
 if [[ $commands[aws] ]]; then
     complete -C aws_completer aws
-    complete -C aws_completer aws1
-    if [[ -d /usr/local/aws-cli/v2/ ]]; then
-        complete -C /usr/local/aws-cli/v2/current/bin/aws_completer aws2
-    else
-        complete -C aws_completer aws2
-    fi
 fi
 
 ## azure, use included bash completion
