@@ -1,0 +1,18 @@
+# dotfiles bashrc
+
+export PROMPT_DIRTRIM=2
+export PS1='\w \e[0;35m>\e[m '
+
+if [ -f ~/.profile ]; then
+  source ~/.profile
+fi
+
+for file in $HOME/.zsh/aliases/*.sh; do
+     source "$file"
+done
+
+if [ -f ~/.bashrc_local ]; then
+  source ~/.bashrc_local
+fi
+
+# vi:syntax=bash
