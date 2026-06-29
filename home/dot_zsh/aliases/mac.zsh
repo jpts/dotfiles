@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "darwin" }}
 #!/usr/bin/env zsh
 
 mac-flush-dns() {
@@ -107,3 +108,4 @@ mac-wg-clean-dns() {
 CMDS
     done
 }
+{{- end }}

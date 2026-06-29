@@ -28,6 +28,7 @@ function icanhazinternet() {
   fi
 }
 
+{{- if eq .chezmoi.os "linux" }}
 function vpnexec() {
     if [ "z$XDG_SESSION_TYPE" = "zx11" ]; then
         P='XDG_RUNTIME_DIR,SSH_AUTH_SOCK'
@@ -48,7 +49,7 @@ function vpnexec() {
 function humbledl() {
     awk -F'"' '/dl.humble.+pdf/ {print $4}' "$1" | sed 's/amp;//g' | parallel curl -JOL
 }
-
+{{- end }}
 
 curlws() {
     setopt local_options BASH_REMATCH;

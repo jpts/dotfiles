@@ -1,6 +1,8 @@
+{{- if eq .dev_machine true }}
 [storage]
 {{- if eq .osid "linux-fedora" }}
 driver = "btrfs"
 {{- else -}}
 driver = "overlay"
+{{- end }}
 {{- end }}

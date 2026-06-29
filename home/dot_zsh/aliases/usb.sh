@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "linux" }}
 usbguard-list-blocked() {
     local TMP=$(mktemp)
     usbguard list-devices -b > $TMP
@@ -36,3 +37,4 @@ function ouisearch() {
   fi
   grep -i "$OUI" "$DB"
 }
+{{- end }}
