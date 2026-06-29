@@ -29,16 +29,6 @@ antidote:
     - "*/antidote.zsh"
     - "*/functions"
     - "*/functions/*"
-tenv:
-  type: archive
-  url: {{ gitHubReleaseAssetURL "tofuutils/tenv" "v4.14.8" "tenv_*_Linux_x86_64.tar.gz" }}
-  targetPath: .local/bin/
-  checksum:
-    sha256: "7a1774a9422d2713ee2991fff17e615077f340993a086d8ef2c590982950f6b8"
-  include:
-    - tenv
-    - tf
-    - terraform
 gitstatusd:
   type: archive-file
   url: https://github.com/romkatv/gitstatus/releases/download/v1.5.4/gitstatusd-linux-x86_64.tar.gz
@@ -46,10 +36,11 @@ gitstatusd:
   targetPath: .cache/gitstatus/gitstatusd-linux-x86_64
   checksum:
     sha256: "9633816e7832109e530c9e2532b11a1edae08136d63aa7e40246c0339b7db304"
-tf-docs:
-  type: archive-file
-  url: {{ gitHubReleaseAssetURL "terraform-docs/terraform-docs" "v0.24.0" "terraform-docs-*-linux-amd64.tar.gz" }}
-  path: terraform-docs
-  targetPath: .local/bin/terraform-docs
+crane:
+  type: archive
+  url: {{ gitHubReleaseAssetURL "google/go-containerregistry" "v0.21.7" "go-containerregistry_Linux_x86_64.tar.gz" }}
   checksum:
-    sha256: "9005daf969de0b50134493a2c00078b49f5f5b39d021cda7c89bf4d4f3d776d3"
+    sha256: "1a57bc98207fa1c0d04bf760699099e26f8383499bfd55b99c1b919a928a7230"
+  targetPath: .local/bin/
+  include:
+    - crane

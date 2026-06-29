@@ -3,14 +3,20 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{- $dev_machine := true -}}
+
 {{- $choices := list "personal" "work" -}}
 {{- $machine_type := promptChoiceOnce . "machine_type" "What type of machine are you on" $choices -}}
+{{- if eq $machine_type "work" -}}
+{{- $dev_machine = promptBoolOnce . "dev_machine" "Is this a dev machine?" -}}
+{{- end -}}
 
 sourceDir: ~/git/github/dotfiles-public
 
 data:
   osid: {{ $osid | quote }}
   machine_type: {{ $machine_type | quote }}
+  dev_machine: {{ $dev_machine }}
 
 gitHub:
   refreshPeriod: 3h

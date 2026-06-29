@@ -1,0 +1,19 @@
+{{- if eq .dev_machine true }}
+tenv:
+  type: archive
+  url: {{ gitHubReleaseAssetURL "tofuutils/tenv" "v4.14.8" "tenv_*_Linux_x86_64.tar.gz" }}
+  targetPath: .local/bin/
+  checksum:
+    sha256: "7a1774a9422d2713ee2991fff17e615077f340993a086d8ef2c590982950f6b8"
+  include:
+    - tenv
+    - tf
+    - terraform
+tf-docs:
+  type: archive-file
+  url: {{ gitHubReleaseAssetURL "terraform-docs/terraform-docs" "v0.24.0" "terraform-docs-*-linux-amd64.tar.gz" }}
+  path: terraform-docs
+  targetPath: .local/bin/terraform-docs
+  checksum:
+    sha256: "9005daf969de0b50134493a2c00078b49f5f5b39d021cda7c89bf4d4f3d776d3"
+{{- end }}

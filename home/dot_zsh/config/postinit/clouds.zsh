@@ -34,3 +34,7 @@ fi
 if [[ $commands[helm] ]]; then
     source-completion-cache "helm"
 fi
+
+if [[ $commands[crane] ]]; then
+    source-completion-cache "crane"
+fi
