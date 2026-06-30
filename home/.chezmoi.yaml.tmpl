@@ -2,6 +2,7 @@
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
+{{- $osarch := printf "%s-%s" .chezmoi.os .chezmoi.arch -}}
 
 {{- $dev_machine := true -}}
 
@@ -15,6 +16,7 @@ sourceDir: ~/git/github/dotfiles-public
 
 data:
   osid: {{ $osid | quote }}
+  osarch: {{ $osarch | quote }}
   machine_type: {{ $machine_type | quote }}
   dev_machine: {{ $dev_machine }}
 

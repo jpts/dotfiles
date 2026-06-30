@@ -1,0 +1,19 @@
+binaries:
+  gitstatusd:
+    repo: romkatv/gitstatus
+    version: v1.5.4
+    asset_pattern: gitstatusd-OS-UNAME_ARCH.tar.gz
+    path: gitstatusd-OS-UNAME_ARCH
+    targetPath: .cache/gitstatus/gitstatusd-OS-UNAME_ARCH
+    arch:
+      linux-amd64: "9633816e7832109e530c9e2532b11a1edae08136d63aa7e40246c0339b7db304"
+      darwin-arm64: "eae979e990ca37c56ee39fadd0c3f392cbbd0c6bdfb9a603010be60d9e48910a"
+  crane:
+    repo: google/go-containerregistry
+    version: v0.21.7
+    asset_pattern: go-containerregistry_OS_UNAME_ARCH.tar.gz
+    path: crane
+    targetPath: .local/bin/crane
+    arch:
+      linux-amd64: "1a57bc98207fa1c0d04bf760699099e26f8383499bfd55b99c1b919a928a7230"
+      darwin-arm64: "1858c55dcd6053fe869bcb0c4ec20666383ddce445ad0f7e15e1e506b1f7fe52"
