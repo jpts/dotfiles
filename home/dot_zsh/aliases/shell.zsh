@@ -35,7 +35,7 @@ function strip-comments() {
 function source-completion-cache() {
     local cmd="$1"
     local args="${@:2}"
-    local cdir="$HOME/.cache/zsh/fns/"
+    local cdir="$HOME/.cache/zsh/fns"
     local ccache="$cdir/_$cmd"
 
     # remove failed fn cache files
