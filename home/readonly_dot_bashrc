@@ -1,11 +1,12 @@
 # dotfiles bashrc
 
+# If interactive, use zsh
+if [[ $- == *i* && $(grep -F sshd-session /proc/$PPID/cmdline) && -e /usr/bin/zsh ]]; then
+  SHELL=/usr/bin/zsh exec /usr/bin/zsh --login
+fi
+
 export PROMPT_DIRTRIM=2
 export PS1='\w \e[0;35m>\e[m '
-
-if [ -f ~/.profile ]; then
-  source ~/.profile
-fi
 
 for file in $HOME/.zsh/aliases/*.sh; do
      source "$file"
