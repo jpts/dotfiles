@@ -8,6 +8,8 @@ packages:
     - fzf
     - ripgrep
     - python3-rich
+    - python3-poetry
+    - python3-setuptools
     - podman
     - skopeo
     - pre-commit
