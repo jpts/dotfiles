@@ -1,3 +1,3 @@
 if [[ $commands[chezmoi] ]]; then
-    source-completion-cache chezmoi
+  ensure-completion-cache "chezmoi"
 fi

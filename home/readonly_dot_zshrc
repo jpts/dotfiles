@@ -53,10 +53,9 @@ zstyle ':completion:*' squeeze-slashes true
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # ZSH Defaults
-for file in $ZSH/preinit/*.zsh; do
+for file in $ZSH/init/*.zsh; do
     source "$file"
 done
-
 
 # Load Antidote
 fpath+=("$ANTIDOTEDIR")
@@ -79,16 +78,20 @@ if [ -f $DOTFILES/aliases_local ]; then
   source $DOTFILES/aliases_local
 fi
 
-# lastly compinit magic
+# compinit magic
+# the right order is
+#  1. generate _files
+#  2. compinit ++ if new files
+#  3. bashcompinit
+#  4. extra compdefs
+
+for file in $ZSH/precompinit/*.zsh; do
+    source "$file"
+done
+
 source $ZSH/compinit.zsh
 
-# kitty
-if [[ $commands[kitty] && "$TERM" == "xterm-kitty" ]]; then
-    source-completion-cache "kitty" "+ complete setup zsh"
-fi
-
-# post compinit completion
-for file in $ZSH/postinit/*.zsh; do
+for file in $ZSH/postcompinit/*.zsh; do
     source "$file"
 done
 

@@ -1,5 +1,3 @@
-## needs to be run after compinit, because bashcompinit??
-
 # detect if gcloud installed
 if [[ $commands[gcloud] ]]; then
     source "$ZSH/gcloud.zsh"
@@ -18,9 +16,6 @@ if [[ -f /usr/share/bash-completion/completions/az ]]; then
 fi
 
 if [[ $commands[kubectl] ]]; then
-  # needs a manual load for some reason
-  source-completion-cache "kubectl"
-
   compdef k=kubectl
 fi
 
@@ -29,12 +24,4 @@ if [[ $commands[terraform] ]]; then
   complete -o nospace -C "$TF" terraform
 
   compdef tf=terraform
-fi
-
-if [[ $commands[helm] ]]; then
-    source-completion-cache "helm"
-fi
-
-if [[ $commands[crane] ]]; then
-    source-completion-cache "crane"
 fi

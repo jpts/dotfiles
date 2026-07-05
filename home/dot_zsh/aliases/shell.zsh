@@ -32,7 +32,7 @@ function strip-comments() {
      grep -v '^#' "$1" | grep -v '^$'
 }
 
-function source-completion-cache() {
+function ensure-completion-cache() {
     local cmd="$1"
     local args="${@:2}"
     local cdir="$HOME/.cache/zsh/fns"
@@ -62,6 +62,10 @@ function source-completion-cache() {
         sed -i.bak -e 's/autoload .* bashcompinit//g' "${ccache}"
         rm -f "${ccache}.bak"
 
+        ## remove unnecessary compdef statements, since we won't be sourcing these
+        sed -i.bak -e "s/^compdef _$cmd .*//g" "${ccache}"
+        rm -f "${ccache}.bak"
+
         ## remove unsued debug statements
         perl -0777 -i -pe "s/__${cmd}_debug\(\).*?}\n//smg" "$ccache"
         perl -0777 -i -pe "s/.*__${cmd}_debug.*//g" "$ccache"
@@ -72,8 +76,6 @@ function source-completion-cache() {
     fi
 
     zcompile-many "$ccache"
-
-    source "$ccache"
 }
 
 alias dotenv-load="set -o allexport; source .env; set +o allexport"
