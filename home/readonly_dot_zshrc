@@ -32,21 +32,6 @@ export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 export ANTIDOTECACHE="${XDG_CACHE_HOME:-$HOME/.cache}/antidote"
 export ANTIDOTEDIR="$ZSH_CACHE_DIR/antidote"
 
-# prompt customisations
-setopt prompt_subst
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
-
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
-
-# "Avoid partial globs"; assume the first part of a path is exact?
-zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' accept-exact-dirs true
-
-zstyle ':completion:*' list-dirs-first true
-zstyle ':completion:*' squeeze-slashes true
-
 # Plugin Options
 # https://github.com/zsh-users/zsh-autosuggestions#disabling-automatic-widget-re-binding
 # _zsh_autosuggest_bind_widgets

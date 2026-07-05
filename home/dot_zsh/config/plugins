@@ -1,8 +1,8 @@
 # theme
 romkatv/powerlevel10k pin:35833ea15f14b71dbcebc7e54c104d8d56ca5268 #v1.20.0
 
-# my own completion repo
-jpts/zsh-prezto-completion
+# additional completions
+zsh-users/zsh-completions path:src kind:fpath pin:03bae0bf3f9c4ab894f1f11a31ffe7a1e1029879
 
 # suggest completions
 zsh-users/zsh-autosuggestions pin:e52ee8ca55bcc56a17c828767a3f98f22a68d4eb #v0.7.1
