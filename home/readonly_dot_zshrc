@@ -26,7 +26,6 @@ function zcompile-antidote-plugins() {
   unset IFS
 }
 
-export DOTFILES="$HOME/.dotfiles"
 ZSH="$HOME/.zsh/config"
 export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 export ANTIDOTECACHE="${XDG_CACHE_HOME:-$HOME/.cache}/antidote"
@@ -59,10 +58,6 @@ for file in $HOME/.zsh/aliases/*.{zsh,sh}; do
     source "$file"
 done
 
-if [ -f $DOTFILES/aliases_local ]; then
-  source $DOTFILES/aliases_local
-fi
-
 # compinit magic
 # the right order is
 #  1. generate _files
@@ -80,6 +75,9 @@ for file in $ZSH/postcompinit/*.zsh; do
     source "$file"
 done
 
+if [[ -f ~/.zsh/zshrc_local ]]; then
+  source ~/.zsh/zshrc_local
+fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -z "$ZPROF" ] || zprof
