@@ -1,3 +1,7 @@
+# Host definitions
+Include ~/.ssh/config.d/*.conf
+
+# Defaults at the end
 Host *
   # Set secure algos by default
   KexAlgorithms curve25519-sha256@libssh.org,curve25519-sha256,diffie-hellman-group-exchange-sha256
@@ -14,7 +18,7 @@ Host *
   # Mux port
   ControlMaster auto
   ControlPath ~/.ssh/.mux-%C
-  ControlPersist 10m
+  ControlPersist 30m
 
   # Conveinence
   ServerAliveInterval 60
@@ -24,8 +28,5 @@ Host *
 
   # Disable host key verification for forwarded connections
   NoHostAuthenticationForLocalhost yes
-
-# Host definitions
-Include ~/.ssh/config.d/*.conf
 
 # vi:syntax=sshconfig
