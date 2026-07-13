@@ -26,9 +26,8 @@ alias diff='diff -Naur --color=auto'
 alias parallel='parallel --will-cite'
 alias time="command time -f '%Us user %Ss system %P cpu %E total'"
 
-alias ssh='TERM=xterm-256color ssh' #fix most remote systems
-
-# kitty
 alias icat='kitty +kitten icat'
 
+{{- if eq .machine_type "personal" }}
 alias sign-kmod='/usr/src/kernels/`uname -r`/scripts/sign-file'
+{{- end }}
