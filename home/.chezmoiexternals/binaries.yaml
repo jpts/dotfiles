@@ -1,18 +1,17 @@
-{{- $osarch := .osarch }}
-{{- $uname_arch := .chezmoi.arch | replace "amd" "x86_" }}
 {{- $os_pattern := printf "?%s" (substr 1 (int (len .chezmoi.os)) .chezmoi.os) }}
-{{- $os := .chezmoi.os }}
 
 {{- range $k, $v := .binaries}}
-{{- $supported_arches := $v | jq "[.arch | keys] | flatten | unique" | toStrings }}
-{{- if has $osarch $supported_arches }}
-{{- $asset_pattern := .asset_pattern | replace "OS" $os_pattern | replace "UNAME_ARCH" $uname_arch }}
+{{- if has $.osarch ($v.arch | keys) }}
+{{- $asset_pattern := .asset_pattern | replace "OS" $os_pattern | replace "UNAME_ARCH" $.uarch }}
+{{- $default_tool_path :=  printf "~/.local/bin/%s" (base .path) }}
+{{- $target_path := get . "targetPath" | replace "OS" $.chezmoi.os | replace "UNAME_ARCH" $.uarch  }}
+
 {{ $k }}:
   type: archive-file
   url: {{ gitHubReleaseAssetURL .repo .version $asset_pattern }}
-  path: {{ .path | replace "OS" $os | replace "UNAME_ARCH" $uname_arch }}
-  targetPath: {{ .targetPath | replace "OS" $os | replace "UNAME_ARCH" $uname_arch }}
+  path: {{ .path | replace "OS" $.chezmoi.os | replace "UNAME_ARCH" $.uarch }}
+  targetPath: {{ default $default_tool_path $target_path }}
   checksum:
-    sha256: "{{ index .arch $osarch }}"
+    sha256: "{{ index .arch $.osarch }}"
 {{- end }}
 {{- end }}
