@@ -14,6 +14,9 @@ packages:
     - skopeo
     - pre-commit
     - yamllint
+    - htop
+    - kitty-terminfo
+    - kitty-shell-integration
   debian:
     - ipcalc-ng
   fedora:
