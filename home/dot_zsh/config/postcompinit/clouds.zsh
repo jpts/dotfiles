@@ -1,13 +1,16 @@
 # detect if gcloud installed
 if [[ $commands[gcloud] ]]; then
     source "$ZSH/gcloud.zsh"
-    alias gcloud='TERM=xterm-256color gcloud'
 fi
 
 # configure completion as per docs
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
 if [[ $commands[aws] ]]; then
-    complete -C aws_completer aws
+    if [[ $commands[aws_completer] ]]; then
+      complete -C aws_completer aws
+    elif [[ -f /usr/libexec/aws_completer ]]; then
+      complete -C /usr/libexec/aws_completer aws
+    fi
 fi
 
 ## azure, use included bash completion
