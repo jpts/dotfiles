@@ -12,13 +12,12 @@ Host *
   # Prefer key auth
   PreferredAuthentications publickey,password,keyboard-interactive
 
-  UseRoaming no
   ForwardAgent no
 
   # Mux port
   ControlMaster auto
   ControlPath ~/.ssh/.mux-%C
-  ControlPersist 30m
+  ControlPersist 60m
 
   # Conveinence
   ServerAliveInterval 60
