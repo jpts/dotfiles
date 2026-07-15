@@ -1,0 +1,8 @@
+{{- if eq .osid "linux-fedora" -}}
+# workaround for pipewire bug
+enable_audio_bell no
+{{- end }}
+
+{{- if eq .chezmoi.os "linux" }}
+wayland_titlebar_color background
+{{- end }}
