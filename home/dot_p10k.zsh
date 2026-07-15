@@ -19,6 +19,7 @@
 
   # Prompt colors.
   local grey='242'
+  local lightgrey='247'
   local red='#FF5C57'
   local yellow='#F3F99D'
   local blue='#57C7FF'
@@ -95,11 +96,11 @@
   ### context ###
 
   # Context format when root: user@host. The first part red, the rest grey.
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE="%F{$red}%n%f%F{$grey}@%m%f"
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE="%F{$red}%n%f%F{$lightgrey}@%m%f"
   # Context format when not root: user@host. The whole thing grey.
-  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$grey}%n@%m%f"
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$lightgrey}%m%f"
   # Don't show context unless root or in SSH.
-  typeset -g POWEARLEVEL9K_CONTEXT_{DEFAULT,SUDO}_CONTENT_EXPANSION=
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
 
   ### command_execution_time ###
 
