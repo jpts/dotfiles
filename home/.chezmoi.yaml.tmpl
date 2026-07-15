@@ -17,6 +17,7 @@ sourceDir: ~/git/github/dotfiles-public
 data:
   osid: {{ $osid | quote }}
   osarch: {{ $osarch | quote }}
+  uarch: {{ .chezmoi.arch | replace "amd" "x86_" }}
   machine_type: {{ $machine_type | quote }}
   dev_machine: {{ $dev_machine }}
 
