@@ -1,0 +1,12 @@
+{{- $font_dir := ".local/share/fonts" }}
+{{- if eq .chezmoi.os "darwin" }}
+{{- $font_dir = "Library/Fonts" }}
+{{- end }}
+
+SourceCodePro:
+  type: archive
+  url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/SourceCodePro.tar.xz
+  targetPath: {{ $font_dir }}/
+  checksum:
+    sha256: "d52d97b66c4c5d6d9d99c88df55148faf39738f244485026f22f8e47407744f4"
+
