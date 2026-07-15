@@ -38,15 +38,16 @@
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     command_execution_time    # previous command duration
     background_jobs
+
     virtualenv                # python virtual environment
-    context                   # user@host
     nix_shell
     terraform
     aws
     azure
     gcloud
     kubecontext
-    chezmoi_shell
+
+    context                   # user@host
   )
 
   ### general ###
@@ -299,6 +300,10 @@
   typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_CONTENT_EXPANSION=
   POWERLEVEL9K_KUBECONTEXT_DEFAULT_CONTENT_EXPANSION+='${P9K_KUBECONTEXT_CLOUD_CLUSTER:-${P9K_KUBECONTEXT_NAME}}'
   POWERLEVEL9K_KUBECONTEXT_DEFAULT_CONTENT_EXPANSION+='${${:-/$P9K_KUBECONTEXT_NAMESPACE}:#/default}'
+
+  if [ -f ~/.zsh/p10k_local ]; then
+    source ~/.zsh/p10k_local
+  fi
 
   # If p10k is already loaded, reload configuration.
   # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.
