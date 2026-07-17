@@ -16,4 +16,11 @@ tf-docs:
   targetPath: .local/bin/terraform-docs
   checksum:
     sha256: "9005daf969de0b50134493a2c00078b49f5f5b39d021cda7c89bf4d4f3d776d3"
+terraform-ls:
+  type: archive-file
+  url: https://releases.hashicorp.com/terraform-ls/0.38.8/terraform-ls_0.38.8_linux_amd64.zip
+  path: terraform-ls
+  targetPath: .local/bin/terraform-ls
+  checksum:
+    sha256: "d16077d9c83f13ac33501af49ea75f43218d3fa2437c6c1374550b2625edc3ef"
 {{- end }}
