@@ -9,7 +9,21 @@
   "suggest.autoTrigger": "always",
   "suggest.virtualText": true,
   "suggest.enableFloat": true,
+  "coc.preferences.formatOnSave": true,
+  "pylsp.plugins.pycodestyle.maxLineLength": 100,
+  "pylsp.plugins.pydocstyle.convention": "google",
+  "pylsp.plugins.black.line_length": 100,
   "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": []
+    },
     "terraform": {
       "command": "terraform-ls",
       "args": [
