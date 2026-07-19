@@ -1,5 +1,5 @@
 #!/bin/sh
 
-# nvimrc hash: {{ include "dot_config/nvim/init.vim.tmpl" | sha256sum }}
+# nvimrc hash: {{ include "dot_config/nvim/config.d/plugins.vim.tmpl" | sha256sum }}
 
-nvim +PlugClean! +PlugUpdate +qall
+nvim -es -u ~/.config/nvim/config.d/plugins.vim -i NONE -c PlugClean! -c PlugUpdate -c qa

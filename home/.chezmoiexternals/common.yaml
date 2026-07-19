@@ -1,12 +1,3 @@
-vim-plug.vim:
-  type: archive-file
-  url: https://github.com/junegunn/vim-plug/archive/refs/tags/0.14.0.tar.gz
-  exact: true
-  stripComponents: 1
-  path: plug.vim
-  targetPath: .vim/autoload/plug.vim
-  checksum:
-    sha256: "a8e86db8c62deefa70057fd0abc81bc20e270ab9811eee3ccbe9ceafd3d8a876"
 neovim-plug.vim:
   type: archive-file
   url: https://github.com/junegunn/vim-plug/archive/refs/tags/0.14.0.tar.gz

@@ -1,0 +1,27 @@
+" Plug Package Manager
+call plug#begin()
+
+" completion
+Plug 'neoclide/coc.nvim', {'commit': 'd1689a4876305e5fc6691910c8ee6f1eb5da2219'} " release HEAD
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'commit': '1c757f2da923472709ddb17bc29d4a5a0efddefd'} " 1.9.3
+Plug 'yaegassy/coc-pylsp', {'do': 'yarn install --frozen-lockfile', 'commit': 'e029406316e92c722a9bda9b7ab7ecff71398bf9'} "v0.13.0
+Plug 'josa42/coc-go', {'commit': '20c30ffd61fdfb4b8886d70f71c44affe411a6a2'} " v1.3.35
+
+" syntax
+Plug 'kigster/Nmap-syntax-highlight', { 'for': ['nmap','txt'], 'commit': '168786d9a97c81654dd633225a1f45c6d8d43d57' } " HEAD
+Plug 'hashivim/vim-terraform', { 'for': 'terraform', 'commit' : '520498fab16a3a11f2ae1b8cb65e0a1684bc317a' } " HEAD
+Plug 'fatih/vim-go', { 'as': 'go-syntax', 'rtp': 'syntax_only', 'do': 'mkdir -p syntax_only/{syntax,ftdetect,autoload/go}; cp -f syntax/*.vim syntax_only/syntax; cp -f ftdetect/*.vim syntax_only/ftdetect; cp -f autoload/go/config.vim syntax_only/autoload/go', 'commit': 'afdc93535605efaa4624b4dde296961add89750f' }
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'mustache', 'commit': '0153fe03a919add2d6cf2d41b2d5b6e1188bc0e0' }
+
+" indent style
+Plug 'lukas-reineke/indent-blankline.nvim', { 'commit': 'd28a3f70721c79e3c5f6693057ae929f3d9c0a03' } " v3.9.1
+
+{{ if eq .chezmoi.os "linux" -}}
+" clip
+Plug 'jasonccox/vim-wayland-clipboard', { 'commit': 'f1f964a08798f78bc821e0cb155987864cb039d9' }
+{{- end }}
+
+" theme
+Plug 'tomasiser/vim-code-dark', { 'commit': '4624dc223bf574aa9a731c2383c579847303c380' }
+
+call plug#end()

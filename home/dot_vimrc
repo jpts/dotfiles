@@ -1,0 +1,6 @@
+" Enable basic compat with vim config
+source ~/.config/nvim/config.d/basic.vim
+source ~/.config/nvim/config.d/macros.vim
+source ~/.config/nvim/config.d/statusline.vim
+
+set directory^=$HOME/.vim/swap/
