@@ -5,6 +5,8 @@ packages:
     - curl
     - neovim
     - nodejs
+    - npm
+    - yarnpkg
     - jq
     - fzf
     - ripgrep
@@ -21,8 +23,19 @@ packages:
     - yamllint
     - golang
     - gopls
+    - gh
   debian:
     - ipcalc-ng
+    - python3-pylsp
+    - python3-pylsp-isort
+    - python3-pylsp-black
+    - libcgi-pm-perl
+    - libdigest-sha-perl
+    - python-is-python3
   fedora:
     - ipcalc
     - nodejs-bash-language-server
+    - python3-lsp-server
+    - python3-lsp-black
+    - perl-CGI
+    - perl-Digest-SHA
