@@ -3,4 +3,9 @@ source ~/.config/nvim/config.d/basic.vim
 source ~/.config/nvim/config.d/macros.vim
 source ~/.config/nvim/config.d/statusline.vim
 
+" theme
+let g:codedark_modern=1
+let g:codedark_transparent=1
+colorscheme codedark
+
 set directory^=$HOME/.vim/swap/

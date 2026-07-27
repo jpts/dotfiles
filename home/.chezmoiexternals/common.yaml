@@ -7,6 +7,17 @@ neovim-plug.vim:
   targetPath: .local/share/nvim/site/autoload/plug.vim
   checksum:
     sha256: "a8e86db8c62deefa70057fd0abc81bc20e270ab9811eee3ccbe9ceafd3d8a876"
+vim-theme:
+  type: archive
+  url: https://github.com/tomasiser/vim-code-dark/archive/4624dc223bf574aa9a731c2383c579847303c380.zip
+  exact: true
+  stripComponents: 1
+  targetPath: .vim/pack/themes/start/vim-code-dark
+  checksum:
+    sha256: "2bb6f077bd7b2d88741a497d2552fde407e6db0cb06bac1a2499d1b9dfe2aa73"
+  include:
+    - "*/autoload/**"
+    - "*/colors/**"
 antidote:
   type: archive
   url: https://github.com/mattmc3/antidote/archive/refs/tags/v2.1.0.tar.gz
