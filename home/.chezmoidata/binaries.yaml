@@ -31,3 +31,10 @@ binaries:
     path: golangci-lint-langserver
     arch:
       linux-amd64: "7c4a200f34af3de4188a792ba676994ce5fdb181dd4731e10cd3cc501e722b28"
+  zellij:
+    repo: zellij-org/zellij
+    version: v0.44.3
+    asset_pattern: zellij-no-web-x86_64-unknown-linux-musl.tar.gz
+    path: zellij
+    arch:
+      linux-amd64: "f901129919b0a405ac5f278f53acd7fde5d62401324c509b6233038d5c0ad1f9"
