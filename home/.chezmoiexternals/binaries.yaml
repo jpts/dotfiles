@@ -2,14 +2,16 @@
 
 {{- range $k, $v := .binaries}}
 {{- if has $.osarch ($v.arch | keys) }}
-{{- $asset_pattern := .asset_pattern | replace "OS" $os_pattern | replace "UNAME_ARCH" $.uarch }}
-{{- $default_tool_path :=  printf "~/.local/bin/%s" (base .path) }}
+{{- $asset_pattern := .asset_pattern | replace "OS" $os_pattern | replace "UNAME_ARCH" $.uarch | replace "ARCH" $.chezmoi.arch | replace "VER" (trimPrefix "v" .version) }}
+{{- $default_tool_path :=  printf ".local/bin/%s" (base .path) }}
 {{- $target_path := get . "targetPath" | replace "OS" $.chezmoi.os | replace "UNAME_ARCH" $.uarch  }}
+
 
 {{ $k }}:
   type: archive-file
   url: {{ gitHubReleaseAssetURL .repo .version $asset_pattern }}
-  path: {{ .path | replace "OS" $.chezmoi.os | replace "UNAME_ARCH" $.uarch }}
+  path: {{ .path | replace "OS" $.chezmoi.os | replace "UNAME_ARCH" $.uarch | replace "ARCH" $.chezmoi.arch | replace "VER" (trimPrefix "v" .version) }}
+  stripComponents: {{ default 0 (get . "stripComponents") }}
   targetPath: {{ default $default_tool_path $target_path }}
   checksum:
     sha256: "{{ index .arch $.osarch }}"

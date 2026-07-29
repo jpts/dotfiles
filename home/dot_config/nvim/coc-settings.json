@@ -10,6 +10,15 @@
   "suggest.virtualText": true,
   "suggest.enableFloat": true,
   "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "python",
+    "json"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "go.checkForUpdates": "disabled",
   "pylsp.plugins.pycodestyle.maxLineLength": 100,
   "pylsp.plugins.pydocstyle.convention": "google",
   "pylsp.plugins.black.line_length": 100,
@@ -23,6 +32,22 @@
         "sh"
       ],
       "ignoredRootPaths": []
+    },
+    "golangci-lint": {
+      "command": "golangci-lint-langserver",
+      "filetypes": [
+        "go"
+      ],
+      "initializationOptions": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path",
+          "stdout",
+          "--show-stats=false",
+          "--issues-exit-code=1"
+        ]
+      }
     },
     "terraform": {
       "command": "terraform-ls",

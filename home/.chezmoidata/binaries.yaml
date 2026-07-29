@@ -16,3 +16,18 @@ binaries:
     arch:
       linux-amd64: "1a57bc98207fa1c0d04bf760699099e26f8383499bfd55b99c1b919a928a7230"
       darwin-arm64: "1858c55dcd6053fe869bcb0c4ec20666383ddce445ad0f7e15e1e506b1f7fe52"
+  golangci-lint:
+    repo: golangci/golangci-lint
+    version: v2.12.2
+    asset_pattern: golangci-lint-VER-OS-ARCH.tar.gz
+    stripComponents: 1
+    path: golangci-lint
+    arch:
+      linux-amd64: "8df580d2670fed8fa984aac0507099af8df275e665215f5c7a2ae3943893a553"
+  golangci-lint-langserver:
+    repo: nametake/golangci-lint-langserver
+    version: v0.0.12
+    asset_pattern: golangci-lint-langserver_OS_UNAME_ARCH.tar.gz
+    path: golangci-lint-langserver
+    arch:
+      linux-amd64: "7c4a200f34af3de4188a792ba676994ce5fdb181dd4731e10cd3cc501e722b28"
