@@ -37,7 +37,6 @@
 
   # Right prompt segments.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-    status
     command_execution_time    # previous command duration
     background_jobs
 
