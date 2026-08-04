@@ -5,3 +5,7 @@ fi
 if [[ $commands[zellij] ]]; then
   ensure-completion-cache zellij "setup --generate-completion zsh"
 fi
+
+if [[ $commands[fly] ]]; then
+  ensure-completion-cache fly
+fi
