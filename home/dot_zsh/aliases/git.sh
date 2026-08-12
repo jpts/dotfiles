@@ -21,6 +21,7 @@ alias gpr='git pull --rebase'
 alias gpp='git pull --rebase && git push'
 alias ga='git add'
 alias gpff='git pull --ff-only'
+alias gpfff='git pull --ff-only --no-tags origin $(git main-branch)'
 
 alias gf='git fetch'
 alias gb='git branch'
@@ -36,3 +37,4 @@ alias glog='git log --pretty=format:"%h - %cn - %s" -10'
 alias glg='git log --graph --oneline --all'
 
 alias git-current-branch="git branch | awk '/*/ {print \$2}'"
+alias gcb=git-current-branch

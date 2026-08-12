@@ -8,6 +8,7 @@
     alias = !git config -l | fgrep alias | cut -c 7- | sort
     slog = log --show-signature
     recommit = !git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG
+    main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
 [commit]
     template = ~/.config/git/commit_template
 [color]
