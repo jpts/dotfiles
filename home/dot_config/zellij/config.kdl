@@ -240,6 +240,7 @@ keybinds clear-defaults=true {
     shared_among "locked" {
         bind "Ctrl d" { CloseFocus; }
         bind "Ctrl Shift c" { Copy; }
+        bind "Super c" { Copy; }
         //bind "Cmd v" { Paste; }
     }
     shared_among "normal" {
@@ -400,7 +401,7 @@ mouse_mode true
 // Enable automatic copying (and clearing) of selection when releasing mouse
 // Default: true
 //
-copy_on_select true
+copy_on_select false
 
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
