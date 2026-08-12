@@ -13,7 +13,8 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "go",
     "python",
-    "json"
+    "json",
+    "terraform"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
