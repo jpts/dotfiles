@@ -1,0 +1,7 @@
+{{- if eq $.dev_machine true -}}
+# Static SSH_AUTH_SOCK symlink for multiplexers
+if [ -n "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent.sock" ]; then
+    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/agent.sock"
+    export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
+fi
+{{- end }}
