@@ -2,6 +2,7 @@ packages:
   all:
     - zsh
     - git
+    - git-lfs
     - curl
     - neovim
     - nodejs
