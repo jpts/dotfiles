@@ -25,11 +25,16 @@
     wsErrorHighlight = all
 [init]
 	  defaultBranch = main
+    defaultRefStorageFormat = files
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+[pack]
+    useSparse = true
+    windowMemory = 1024m
+    threads = 16
 
 [include]
     path = ~/.config/git/local_config

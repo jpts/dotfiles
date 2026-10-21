@@ -1,19 +1,19 @@
 function git-amend-name() {
-    git rebase -i "$1" -x "git commit --amend --reset-author -CHEAD --no-edit"
+  git rebase -i "$1" -x "git commit --amend --reset-author -CHEAD --no-edit"
 }
 
 function github-checkout-pr() {
-    set -uo pipefail
-    if (( $# > 2 )); then
-        >&2 echo "usage: $0 ID PR-NAME"
-        return
-    fi
-    ID=${1}
-    REFNAME=$(gh pr view "$ID" --json headRefName --jq '.headRefName')
-    NAME=${2-$REFNAME}
-    REMOTE=$(git config --get branch.master.remote || git config --get branch.main.remote)
-    git fetch "$REMOTE" "pull/$ID/head:$NAME"
-    git checkout "$NAME"
+  set -uo pipefail
+  if (($# > 2)); then
+    >&2 echo "usage: $0 ID PR-NAME"
+    return
+  fi
+  ID=${1}
+  REFNAME=$(gh pr view "$ID" --json headRefName --jq '.headRefName')
+  NAME=${2-$REFNAME}
+  REMOTE=$(git config --get branch.master.remote || git config --get branch.main.remote)
+  git fetch "$REMOTE" "pull/$ID/head:$NAME"
+  git checkout "$NAME"
 }
 alias ghi='git hist'
 alias gpl='git pull'
@@ -38,3 +38,10 @@ alias glg='git log --graph --oneline --all'
 
 alias git-current-branch="git branch | awk '/*/ {print \$2}'"
 alias gcb=git-current-branch
+
+git-fix-refs() {
+  if grep -F reftable .git/refs/heads; then
+    git fetch
+    git refs migrate --ref-format=files
+  fi
+}
