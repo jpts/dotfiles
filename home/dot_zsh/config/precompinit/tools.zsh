@@ -9,3 +9,7 @@ fi
 if [[ $commands[fly] ]]; then
   ensure-completion-cache fly
 fi
+
+if [[ $commands[yq] ]]; then
+  ensure-completion-cache yq
+fi
