@@ -13,10 +13,14 @@ set -eufo pipefail
 {{ $pkgs = concat $pkgs .packages.debian -}}
 
 {{ $sudo }} apt install -y {{ $pkgs | join " " -}}
-{{ end -}}
 
-{{ if eq .osid "linux-fedora" -}}
-{{ $pkgs = concat $pkgs .packages.fedora -}}
+{{ elif eq .osid "linux-fedora" -}}
+{{ $pkgs = concat $pkgs .packages.rhel .packages.fedora -}}
+
+{{ $sudo }} dnf install -y {{ $pkgs | join " " -}}
+
+{{ elif eq .osid "linux-amzn" -}}
+{{ $pkgs = concat $pkgs .packages.rhel .packages.amzn -}}
 
 {{ $sudo }} dnf install -y {{ $pkgs | join " " -}}
 {{ end }}
