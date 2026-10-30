@@ -31,3 +31,9 @@ antidote:
     - "*/antidote.zsh"
     - "*/functions"
     - "*/functions/*"
+kitty-terminfo:
+  type: file
+  url: "https://github.com/kovidgoyal/kitty/raw/5a4103ad2a3f9320972e0966d38fd1e136bace3b/terminfo/x/xterm-kitty"
+  targetPath: .local/share/terminfo/x/xterm-kitty
+  checksum:
+    sha256: "75a5836628e596ab1c236aeff22a298558ed50e2301248f30b8e236e8e52aabd"
