@@ -38,3 +38,11 @@ binaries:
     path: zellij
     arch:
       linux-amd64: "f901129919b0a405ac5f278f53acd7fde5d62401324c509b6233038d5c0ad1f9"
+  task:
+    repo: go-task/task
+    version: v3.54.0
+    asset_pattern: task_OS_UNAME_ARCH.tar.gz
+    path: task
+    arch:
+      linux-amd64: "680859dbb4d881a9c72d4d9a8f510825450849af8567deacd7302c01124416fb"
+      darwin-arm64: "12a69fcf37bb8d5bc9150c44f9a936775b73e59ff044c2c245232f198c135637"

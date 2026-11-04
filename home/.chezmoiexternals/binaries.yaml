@@ -1,4 +1,4 @@
-{{- $os_pattern := printf "?%s" (substr 1 (int (len .chezmoi.os)) .chezmoi.os) }}
+{{- $os_pattern := printf "?%s" (substr 1 (int (len .chezmoi.os)) .chezmoi.os) -}}
 
 {{- range $k, $v := .binaries}}
 {{- if has $.osarch ($v.arch | keys) }}
