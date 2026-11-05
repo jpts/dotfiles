@@ -14,12 +14,16 @@ set -eufo pipefail
 
 {{ $sudo }} apt install -y {{ $pkgs | join " " -}}
 
-{{ elif eq .osid "linux-fedora" -}}
+{{ else if eq .osid "linux-fedora" -}}
 {{ $pkgs = concat $pkgs .packages.rhel .packages.fedora -}}
 
 {{ $sudo }} dnf install -y {{ $pkgs | join " " -}}
 
-{{ elif eq .osid "linux-amzn" -}}
+{{ else if eq .osid "linux-amzn" -}}
+
+{{ $sudo }} dnf install yum-utils spal-release
+{{ $sudo }} yum-config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+
 {{ $pkgs = concat $pkgs .packages.rhel .packages.amzn -}}
 
 {{ $sudo }} dnf install -y {{ $pkgs | join " " -}}
