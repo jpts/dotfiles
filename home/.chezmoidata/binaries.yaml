@@ -41,7 +41,7 @@ binaries:
   task:
     repo: go-task/task
     version: v3.54.0
-    asset_pattern: task_OS_UNAME_ARCH.tar.gz
+    asset_pattern: task_OS_ARCH.tar.gz
     path: task
     arch:
       linux-amd64: "680859dbb4d881a9c72d4d9a8f510825450849af8567deacd7302c01124416fb"
