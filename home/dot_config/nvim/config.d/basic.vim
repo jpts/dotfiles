@@ -42,6 +42,9 @@ elseif getline(1) =~ '^Starting Nmap.*'
 elseif getline(1) =~ '^FROM '
   syntax on
   setfiletype dockerfile
+elseif getline(1) =~ '^<?XML '
+  syntax on
+  setfiletype xml
 endif
 
 " show whitespace for languages that care
