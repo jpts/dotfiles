@@ -17,7 +17,7 @@ Host *
   # Mux port
   ControlMaster auto
   ControlPath ~/.ssh/.mux-%C
-  ControlPersist 60m
+  ControlPersist 1h
 
   # Conveinence
   ServerAliveInterval 60
@@ -27,5 +27,8 @@ Host *
 
   # Disable host key verification for forwarded connections
   NoHostAuthenticationForLocalhost yes
+
+  # Performance
+  IPQoS lowdelay throughput
 
 # vi:syntax=sshconfig
