@@ -24,6 +24,7 @@ packages:
     - gopls
     - gh
     - shellcheck
+    - socat
   debian:
     - ipcalc-ng
     - python3-pylsp
