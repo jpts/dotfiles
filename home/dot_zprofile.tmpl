@@ -1,4 +1,8 @@
+{{- if eq .chezmoi.os "linux" }}
 export EDITOR=nvim
+{{- else }}
+export EDITOR=vim
+{{- end }}
 export GOPATH=$HOME/go
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export CLOUDSDK_PYTHON=python3
