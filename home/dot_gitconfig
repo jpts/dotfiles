@@ -1,5 +1,4 @@
 [core]
-    editor = nvim
     fileMode = false
     bigFileThreshold = 50m
 [alias]
