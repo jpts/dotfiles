@@ -13,3 +13,7 @@ fi
 if [[ $commands[yq] ]]; then
   ensure-completion-cache yq
 fi
+
+if [[ $commands[task] ]]; then
+  ensure-completion-cache task "--completion zsh"
+fi
