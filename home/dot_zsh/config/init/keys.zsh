@@ -20,3 +20,8 @@ bindkey "^[[5C" forward-word     # Ctl-Right mac
 bindkey '^[[Z' reverse-menu-complete  # Shift-Tab
 # commands
 #bindkey -s "^[[17~" "^usudo !!^M"
+
+# Unset
+bindkey -r "^J" # Clear
+bindkey -r "^K" # Clear
+bindkey -r "^L" # Clear
