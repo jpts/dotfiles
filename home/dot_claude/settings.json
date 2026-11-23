@@ -1,3 +1,8 @@
 {
-  "theme": "dark"
+  "theme": "dark",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.agents/statusline.sh",
+    "padding": 1
+  }
 }
