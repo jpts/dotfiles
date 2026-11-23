@@ -1,0 +1,6 @@
+{
+  "instructions": [
+    ".agents/rules/*.md",
+    "~/.agents/rules/*.md"
+  ]
+}
