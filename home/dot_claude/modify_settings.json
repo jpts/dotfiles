@@ -1,8 +1,14 @@
-{{- /* chezmoi:modify-template */ -}}
+#!/bin/bash
 
-{{- $currentConfig := default .chezmoi.stdin "{}" | fromJson -}}
-{{- $centralConfig := include (joinPath .chezmoi.sourceDir "dot_claude/settings.src.json") | fromJson -}}
+current_config=$(cat - || echo -n "{}")
+if [ -z "$current_config" ]; then
+  current_config="{}"
+fi
 
-{{- mustMergeOverwrite $currentConfig $centralConfig | toPrettyJson -}}
+central_config="$(cat "$HOME/git/github/dotfiles-public/home/dot_claude/settings.src.json")"
 
-{{- /* vim:ft=go: */ -}}
+echo "$current_config" | jq --argjson central "$central_config" '. * $central'
+#echo "$current_config"
+#echo jq --argjson central "$central_config" '. * $central'
+
+# vim: ft=bash
