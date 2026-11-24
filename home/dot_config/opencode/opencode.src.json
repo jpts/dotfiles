@@ -1,0 +1,11 @@
+{
+  "instructions": [
+    ".agents/rules/*.md",
+    "~/.agents/rules/*.md"
+  ],
+  "statusLine": {
+    "type": "command",
+    "command": "~/.agents/statusline.sh",
+    "refreshSeconds": 60
+  }
+}

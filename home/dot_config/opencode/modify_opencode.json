@@ -1,7 +1,7 @@
 {{- /* chezmoi:modify-template */ -}}
 
-{{- $currentConfig := .chezmoi.stdin | fromJson -}}
-{{- $centralConfig := include (joinPath .chezmoi.sourceDir "dot_config/opencode/opencode.json") | fromJson -}}
+{{- $currentConfig := default .chezmoi.stdin "{}" | fromJson -}}
+{{- $centralConfig := include (joinPath .chezmoi.sourceDir "dot_config/opencode/opencode.src.json") | fromJson -}}
 
 {{- mustMergeOverwrite $currentConfig $centralConfig | toPrettyJson -}}
 

@@ -1,0 +1,18 @@
+{
+  "editorMode": "normal",
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.agents/statusline.sh",
+    "padding": 1,
+    "refreshInterval": 60
+  },
+  "theme": "dark",
+  "tui": "fullscreen",
+  "preferredNotifChannel": "kitty",
+  "prefersReducedMotion": true
+}
