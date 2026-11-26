@@ -91,7 +91,7 @@ printf "${COLOR_TAG}%s${COLOR_RESET} | 󰿗 ${COLOR_TAG}%s${COLOR_RESET} |  $
   "$MODEL_NAME" "$EFFORT" "$PROGRESS_BAR"
 
 if [ -n "$GIT_BRANCH" ]; then
-  printf "󰉋 %s |  ${COLOR_BRANCH}%s${COLOR_RESET}" | "$GIT_BRANCH" "$CWD"
+  printf "󰉋 %s |  ${COLOR_BRANCH}%s${COLOR_RESET}" "$GIT_BRANCH" "$CWD"
 else
   printf "󰉋 %s" "$CWD"
 fi
