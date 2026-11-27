@@ -2,29 +2,44 @@
 
 set -eufo pipefail
 
-{{ $sudo := "sudo" -}}
-{{ if eq .chezmoi.username "root" -}}
-{{   $sudo = "" -}}
-{{ end -}}
+{{- $sudo := "sudo" }}
+{{- if eq .chezmoi.username "root" }}
+{{-   $sudo = "" }}
+{{- end }}
 
-{{ $pkgs := .packages.all -}}
+{{- $flavor := "" }}
+{{- range $k, $v := $.flavors }}
+{{- if has $.chezmoi.osRelease.id $v }}
+{{- $flavor = $k }}
+{{- end }}
+{{- end }}
 
-{{ if eq .osid "linux-debian" -}}
-{{ $pkgs = concat $pkgs .packages.debian -}}
+{{- $pkgs := list }}
+{{- range .packages }}
+{{- $pkg := coalesce (get . $.chezmoi.osRelease.id) (get . (printf "like_%s" $flavor )) .name }}
+{{- if and $pkg (ne $pkg "none") }}
+{{-   $pkgs = mustAppend $pkgs $pkg }}
+{{- end }}
+{{- end }}
 
-{{ $sudo }} apt install -y {{ $pkgs | join " " -}}
+# Install repos
+{{- if eq $flavor "redhat" }}
+{{- range (get .repos $flavor) }}
+if [ ! -f /etc/yum.repos.d/{{ .name }}* ]; then
+{{ $sudo }} yum-config-manager --add-repo {{ .url }}
+fi
+{{- end }}
+{{ $sudo }} dnf update -y
+{{- end }}
 
-{{ else if eq .osid "linux-fedora" -}}
-{{ $pkgs = concat $pkgs .packages.rhel .packages.fedora -}}
+# Install packages
+{{- if eq $flavor "debian" }}
+{{ $sudo }} apt install -y {{ $pkgs | join " " }}
 
-{{ $sudo }} dnf install -y {{ $pkgs | join " " -}}
+{{- else if eq $flavor "redhat" }}
+{{ $sudo }} dnf install -y --allowerasing {{ $pkgs | join " " }}
 
-{{ else if eq .osid "linux-amzn" -}}
+{{- else if eq $flavor "alpine" }}
+{{ $sudo }} apk add {{ $pkgs | join " " }}
 
-{{ $sudo }} dnf install yum-utils spal-release
-{{ $sudo }} yum-config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-
-{{ $pkgs = concat $pkgs .packages.rhel .packages.amzn -}}
-
-{{ $sudo }} dnf install -y {{ $pkgs | join " " -}}
-{{ end }}
+{{- end }}

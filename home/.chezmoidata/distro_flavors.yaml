@@ -1,0 +1,11 @@
+flavors:
+  debian:
+    - ubuntu
+    - debian
+  redhat:
+    - fedora
+    - rhel
+    - almalinux
+    - amzn
+  alpine:
+    - alpine
