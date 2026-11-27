@@ -18,12 +18,15 @@ packages:
   - name: ripgrep
   - name: htop
   - name: kitty-terminfo
+    like_redhat: none
   - name: kitty-shell-integration
+    like_redhat: none
   - name: socat
   - name: shellcheck
   - name: python3
+  - name: poetry
+    amzn: none
   - name: python3-rich
-  - name: python3-poetry
   - name: python3-setuptools
   - name: podman
   - name: skopeo
@@ -31,13 +34,16 @@ packages:
   - name: yamllint
   - name: golang
   - name: gopls
+    amzn: none
   - name: gh
   - name: ipcalc
     like_debian: ipcalc-ng
   - name: python3-lsp-server
     like_debian: python3-pylsp
+    amzn: none
   - name: python3-lsp-black
     like_debian: python3-pylsp-black
+    amzn: none
   - name: python3-pylsp-isort
     like_redhat: none
   - name: perl-CGI
