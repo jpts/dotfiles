@@ -9,7 +9,7 @@ if command -v chezmoi &>/dev/null; then
   exit 0
 fi
 
-for cmd in mktemp curl tar sha256sum install awk; do
+for cmd in mktemp curl tar sha256sum install awk git; do
   if ! command -v $cmd &>/dev/null; then
     echo "Command not found: $cmd"
     exit 1
@@ -45,6 +45,9 @@ if ! command -v cosign &>/dev/null; then
       ;;
     alpine)
       sudo apk add cosign -y --no-cache
+      ;;
+    fedora | almalinux)
+      install_cosign_from_github
       ;;
     *)
       echo "Distro $DISTRO unsuported" >&2
